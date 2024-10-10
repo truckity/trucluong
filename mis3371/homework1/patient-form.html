@@ -1,0 +1,218 @@
+<!-- 
+Program name: patient-form.html
+Name: Truc Luong
+Date Created: 09/8/2024
+Date Last Edited: 09/12/2024
+Version: 1
+Description: Patient Form -->
+<!-- submission redirect -->
+<script>
+    function redirectToThankYouPage() {
+        window.location.href = "./patient-form-thankyou.html";
+    }
+
+    function validateForm() {
+        let isValid = true; 
+        let firstName = document.getElementById("firstName").value;
+        let lastName = document.getElementById("lastName").value;
+        
+        if (!firstName || !lastName) {
+            isValid = false;
+            alert("First and Last Name are required.");
+        }
+
+        return isValid;
+    }
+</script>
+
+<body>
+    <div class="banner">
+        <img src="../Adjecta_Medical.jpg" alt="Adjecta Medical Logo" width="350">
+        <h1 class="header">Adjecta Medical</h1>
+        <p class="headertext">To discover, develop and deliver a healthier tomorrow</p>
+        <div id="currentDateTime"></div>
+    </div>
+    <h2>Adjecta Medical Patient Form</h2>
+    <br>
+   <form id="applicationForm" action="/submit_application" method="post" 
+      onsubmit="if (validateForm()) { redirectToThankYouPage(); } return false;">
+        <!-- Input Personal Information -->
+        <h2>Personal Information</h2>
+        <table>
+            <tr>
+                <td><label for="firstName">First Name:</label></td>
+                <td><input type="text" id="firstName" name="firstName" maxlength="30" required></td>
+            </tr>
+            <tr>
+                <td><label for="mid">Middle Initial:</label></td>
+                <td><input type="text" id="mid" name="mid" maxlength="1"></td>
+            </tr>
+            <tr>
+                <td><label for="lastName">Last Name:</label></td>
+                <td><input type="text" id="lastName" name="lastName" maxlength="30" required></td>
+            </tr>
+            <tr>
+                <td><label for="birthdate">Date of Birth:</label></td>
+                <td><input type="text" id="birthdate" name="birthdate" pattern="(0[1-9]|1[0-2])/(0[1-9]|[12][0-9]|3[01])/\d{4}" placeholder="MM/DD/YYYY" required></td>
+            </tr>
+            <tr>
+                <td><label for="ssn">Social Security Number:</label></td>
+                <td><input type="password" id="ssn" name="ssn" pattern="\d{3}-\d{2}-\d{4}" placeholder="XXX-XX-XXXX" maxlength="11" required></td>
+            </tr>
+        </table>
+
+        <!-- Input Address Information -->
+        <h2>Address</h2>
+        <table>
+            <tr>
+                <td><label for="address">Address Line 1:</label></td>
+                <td><input type="text" id="address" name="address" maxlength="30" required></td>
+            </tr>
+            <tr>
+                <td><label for="address2">Address Line 2:</label></td>
+                <td><input type="text" id="address2" name="address2"></td>
+            </tr>
+            <tr>
+                <td><label for="city">City:</label></td>
+                <td><input type="text" id="city" name="city" required></td>
+            </tr>
+            <tr>
+                <td><label for="state">State:</label></td>
+                <td>
+                    <select id="state" name="state" required>
+                        <option value="" disabled selected>Select your state</option>
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD">Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="US-PR">Puerto Rico</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="zip">ZIP Code:</label></td>
+                <td><input type="text" id="zip" name="zip" pattern="\d{5}" maxlength="5" required></td>
+            </tr>
+        </table>
+
+        <!-- Input Login Information -->
+        <h2>Login Information</h2>
+        <table>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" id="username" name="username" maxlength="20" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" name="password" required></td>
+            </tr>
+            <tr>
+                <td><label for="confirm_password">Confirm Password:</label></td>
+                <td><input type="password" id="confirm_password" name="confirm_password" required></td>
+            </tr>
+            <tr>
+                <td colspan="2"><p id="password_error" style="color: red;"></p></td>
+            </tr>
+        </table>
+
+        <!--Input Patient Symptoms -->
+        <label for="patient_notes">Patient Medical Symptoms:</label>
+
+<textarea id="patient_notes" name="patient_notes" rows="6" cols="35" placeholder="Enter medical history, symptoms, or other relevant information here."></textarea>
+        <!--Input Medical History -->
+        <h2>Medical History</h2>
+        <label>Check all that apply:</label><br>
+        <input type="checkbox" name="medical" value="chickenpox"> Chicken Pox
+        <input type="checkbox" name="medical" value="measles"> Measles
+        <input type="checkbox" name="medical" value="covid19"> Covid-19<br>
+        <input type="checkbox" name="medical" value="smallpox"> Small Pox
+        <input type="checkbox" name="medical" value="tetanus"> Tetanus<br>
+
+        <!-- Input Gender -->
+        <h2>Gender</h2>
+        <input type="radio" name="gender" value="male" required> Male
+        <input type="radio" name="gender" value="female"> Female
+        <input type="radio" name="gender" value="other"> Other<br>
+
+        <!-- Input Health Scale -->
+        <h2>Health Scale</h2>
+        <label>On a scale of 1 to 10, how is your health?</label>
+        <input type="range" id="health" name="health" min="1" max="10"><br>
+
+        <!-- Submit & Clear and Start Over -->
+        <input type="reset" value="CLEAR AND START OVER">
+        <input type="submit" value="Submit">
+    </form>
+    <footer>
+        <div class="footer-container">
+            <div class="address">
+                <h3>Adjecta Medical</h3>
+                <p>PO BOX 42204</p>
+                <p>Houston, TX 77027</p>
+            </div>
+            
+            <div class="contact-us">
+                <h3>CONTACT US</h3>
+                <ul class="social-links">
+                    <li><a href="https://www.facebook.com" target="_blank">Facebook</a></li>
+                    <li><a href="https://x.com/adjectamedical?lang=en" target="_blank">X</a></li>
+                    <li><a href="https://www.instagram.com/adjectamedical/" target="_blank">Instagram</a></li>
+                </ul>
+            </div>
+            
+            <div class="image-container">
+                <img src="../Adjecta_Medical.jpg" alt="Adjecta Medical Logo" width="150">
+            </div>
+        </div>
+    </footer>
+
+<!-- CSS Components -->
+<link rel="stylesheet" type="text/css" href="./patient-form-style.css">
+   
